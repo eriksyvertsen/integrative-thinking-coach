@@ -369,7 +369,7 @@
   <div class="header">
     <div class="header-inner">
       <div class="logo">
-        <span>Integrative Thinking Coach</span>
+        <svg viewBox="0 0 120 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><text x="0" y="26" font-family="'Special Gothic Expanded One', sans-serif" font-size="28" font-weight="400">USVC</text></svg>
       </div>
       <div class="nav-spacer"></div>
       <div class="nav-links">
@@ -667,14 +667,37 @@
       }
     }
 
+    function exportMarkdown() {
+      const renderers = [renderIntro, renderArticulate, renderAnalyze, renderRemix, renderTest, renderSummary];
+      renderStepper();
+      const sections = [];
+      phases.forEach((phase, index) => {
+        const title = phaseLabels[phase];
+        const content = state.responses[phase] || '(Not filled in)';
+        sections.push(`## ${title}\n\n${content}`);
+      });
+      const markdown = `# Integrative Thinking Session\n\n${sections.join('\n\n')}`;
+      const element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(markdown));
+      element.setAttribute('download', 'integrative-thinking-session.md');
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    }
+
     // Initial setup
     const app = document.getElementById('app');
     const stepper = createStepper();
     app.appendChild(stepper);
 
     const renderers = [renderIntro, renderArticulate, renderAnalyze, renderRemix, renderTest, renderSummary];
-    app.innerHTML = renderers[state.phase]();
+    const phaseContainer = document.createElement('div');
+    phaseContainer.innerHTML = renderers[state.phase]();
+    app.appendChild(phaseContainer);
     renderStepper();
-  </script>
+
+    render();
+</script>
 </body>
 </html>
