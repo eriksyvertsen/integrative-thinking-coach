@@ -41,10 +41,640 @@
       min-height: 100vh;
       font-size: 14px;
     }
+
+    /* Header */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .nav-spacer { flex: 1; }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-link {
+      font-size: 12px;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Stepper */
+    .stepper {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    .step.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .step.active .step-dot {
+      background: var(--accent);
+    }
+    .step-connector {
+      width: 20px;
+      height: 2px;
+      background: var(--border);
+      margin: 0 -4px;
+    }
+    .step.active ~ .step .step-connector,
+    .step.active .step-connector {
+      background: var(--accent);
+    }
+
+    /* Main Phase */
+    .phase-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .phase-content h1 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .phase-content p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .phase-content .description {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    /* Questions/Content */
+    .question-group {
+      margin-bottom: 32px;
+    }
+    .question-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .question-text {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 120px;
+      background: var(--surface);
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+    textarea::placeholder {
+      color: var(--text-secondary);
+    }
+
+    /* Navigation */
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      justify-content: flex-end;
+    }
+    button {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      transition: all 0.2s;
+      min-width: 100px;
+    }
+    button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    button.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    button.primary:hover:not(:disabled) {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Result Display */
+    .result-container {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .result-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .result-content {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* Visualizations */
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .visual-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+    .visual-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    .visual-card p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .phase-container {
+        grid-template-columns: 1fr;
+      }
+      .phase-content h1 {
+        font-size: 28px;
+      }
+      .stepper {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .step {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .step-connector {
+        display: none;
+      }
+      .visual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Loading state */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Error state */
+    .error-message {
+      background: #FADDD1;
+      border: 1px solid #D33D27;
+      color: #D33D27;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* Success state */
+    .success-message {
+      background: var(--success-light);
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.tsx"></script>
+  <div class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span>Integrative Thinking Coach</span>
+      </div>
+      <div class="nav-spacer"></div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Coach</a>
+        <a href="#" class="nav-link">About</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="app"></div>
+  </div>
+
+  <script>
+    const state = {
+      phase: 'intro',
+      responses: {
+        intro: '',
+        articulate: '',
+        analyze: '',
+        remix: '',
+        test: '',
+        summary: ''
+      }
+    };
+
+    const phases = ['intro', 'articulate', 'analyze', 'remix', 'test', 'summary'];
+    const phaseLabels = {
+      intro: 'Introduce the Problem',
+      articulate: 'Articulate the Question',
+      analyze: 'Analyze',
+      remix: 'Remix and Recombine',
+      test: 'Test Against Reality',
+      summary: 'Summary'
+    };
+
+    const phaseDescriptions = {
+      intro: 'Begin by introducing the problem or challenge you want to work through using integrative thinking.',
+      articulate: 'Clearly articulate the question or problem you are trying to solve. What is the core issue?',
+      analyze: 'Analyze the problem from multiple perspectives. What are the key factors and tensions?',
+      remix: 'Remix and recombine your insights to discover new possibilities and unexpected connections.',
+      test: 'Test your solution against reality. How would this work in practice? What challenges might arise?',
+      summary: 'Summarize your thinking and next steps. What have you learned?'
+    };
+
+    const questions = {
+      intro: 'Describe the problem or challenge you want to explore:',
+      articulate: 'What is the core question you need to answer?',
+      analyze: 'What are the key factors and tensions in this problem? What perspectives are competing?',
+      remix: 'How can you recombine these perspectives to create a new approach? What unexpected connections do you see?',
+      test: 'How would your solution work in practice? What challenges might you face?',
+      summary: 'Summarize your thinking and next steps:'
+    };
+
+    function renderIntro() {
+      return `
+        <div class="phase-container">
+          <div class="phase-content">
+            <h1>${phaseLabels.intro}</h1>
+            <p class="description">${phaseDescriptions.intro}</p>
+            <div class="question-group">
+              <label class="question-text">${questions.intro}</label>
+              <textarea placeholder="Enter your problem or challenge here..." id="intro-input"></textarea>
+            </div>
+            <div class="controls">
+              <button class="primary" onclick="nextPhase()">Next: Articulate</button>
+            </div>
+          </div>
+          <div class="phase-content">
+            <h3>About Integrative Thinking</h3>
+            <p>Integrative thinking is a problem-solving approach that goes beyond choosing between opposing views. Instead, it identifies the legitimate benefits of each perspective and combines them into a new, innovative solution.</p>
+            <p>This coach guides you through six phases designed to help you apply integrative thinking to your own challenges.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderArticulate() {
+      return `
+        <div class="phase-container">
+          <div class="phase-content">
+            <h1>${phaseLabels.articulate}</h1>
+            <p class="description">${phaseDescriptions.articulate}</p>
+            <div class="question-group">
+              <label class="question-text">${questions.articulate}</label>
+              <textarea placeholder="What is the core question?" id="articulate-input"></textarea>
+            </div>
+            <div class="controls">
+              <button onclick="prevPhase()">Back</button>
+              <button class="primary" onclick="nextPhase()">Next: Analyze</button>
+            </div>
+          </div>
+          <div class="phase-content">
+            <h3>Your Problem</h3>
+            <div class="result-container">
+              <span class="result-label">Problem Statement</span>
+              <div class="result-content">${state.responses.intro || '(Not yet filled in)'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAnalyze() {
+      return `
+        <div class="phase-container">
+          <div class="phase-content">
+            <h1>${phaseLabels.analyze}</h1>
+            <p class="description">${phaseDescriptions.analyze}</p>
+            <div class="question-group">
+              <label class="question-text">${questions.analyze}</label>
+              <textarea placeholder="What are the competing perspectives and tensions?" id="analyze-input"></textarea>
+            </div>
+            <div class="controls">
+              <button onclick="prevPhase()">Back</button>
+              <button class="primary" onclick="nextPhase()">Next: Remix</button>
+            </div>
+          </div>
+          <div class="phase-content">
+            <h3>Key Insights</h3>
+            <div class="result-container">
+              <span class="result-label">Core Question</span>
+              <div class="result-content">${state.responses.articulate || '(Not yet filled in)'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderRemix() {
+      return `
+        <div class="phase-container">
+          <div class="phase-content">
+            <h1>${phaseLabels.remix}</h1>
+            <p class="description">${phaseDescriptions.remix}</p>
+            <div class="question-group">
+              <label class="question-text">${questions.remix}</label>
+              <textarea placeholder="How can you combine these perspectives into something new?" id="remix-input"></textarea>
+            </div>
+            <div class="controls">
+              <button onclick="prevPhase()">Back</button>
+              <button class="primary" onclick="nextPhase()">Next: Test</button>
+            </div>
+          </div>
+          <div class="phase-content">
+            <h3>Problem Analysis</h3>
+            <div class="result-container">
+              <span class="result-label">Key Factors & Tensions</span>
+              <div class="result-content">${state.responses.analyze || '(Not yet filled in)'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTest() {
+      return `
+        <div class="phase-container">
+          <div class="phase-content">
+            <h1>${phaseLabels.test}</h1>
+            <p class="description">${phaseDescriptions.test}</p>
+            <div class="question-group">
+              <label class="question-text">${questions.test}</label>
+              <textarea placeholder="How does your solution stand up to real-world tests?" id="test-input"></textarea>
+            </div>
+            <div class="controls">
+              <button onclick="prevPhase()">Back</button>
+              <button class="primary" onclick="nextPhase()">Next: Summary</button>
+            </div>
+          </div>
+          <div class="phase-content">
+            <h3>Your New Approach</h3>
+            <div class="result-container">
+              <span class="result-label">Integrated Solution</span>
+              <div class="result-content">${state.responses.remix || '(Not yet filled in)'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSummary() {
+      return `
+        <div class="phase-container">
+          <div class="phase-content">
+            <h1>${phaseLabels.summary}</h1>
+            <p class="description">${phaseDescriptions.summary}</p>
+            <div class="question-group">
+              <label class="question-text">${questions.summary}</label>
+              <textarea placeholder="Summarize your learning..." id="summary-input"></textarea>
+            </div>
+            <div class="controls">
+              <button onclick="prevPhase()">Back</button>
+              <button class="primary" onclick="completedPhase()">Complete</button>
+            </div>
+          </div>
+          <div class="phase-content">
+            <h3>Reality Check</h3>
+            <div class="result-container">
+              <span class="result-label">Real-World Testing</span>
+              <div class="result-content">${state.responses.test || '(Not yet filled in)'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function nextPhase() {
+      const currentIndex = phases.indexOf(state.phase);
+      if (currentIndex < phases.length - 1) {
+        // Save current response
+        const inputId = state.phase + '-input';
+        const input = document.getElementById(inputId);
+        if (input) {
+          state.responses[state.phase] = input.value;
+        }
+        state.phase = phases[currentIndex + 1];
+        render();
+      }
+    }
+
+    function prevPhase() {
+      const currentIndex = phases.indexOf(state.phase);
+      if (currentIndex > 0) {
+        // Save current response
+        const inputId = state.phase + '-input';
+        const input = document.getElementById(inputId);
+        if (input) {
+          state.responses[state.phase] = input.value;
+        }
+        state.phase = phases[currentIndex - 1];
+        render();
+      }
+    }
+
+    function completedPhase() {
+      const inputId = state.phase + '-input';
+      const input = document.getElementById(inputId);
+      if (input) {
+        state.responses[state.phase] = input.value;
+      }
+      alert('Your integrative thinking journey is complete! You can now refine your solution based on the insights you\'ve gathered.');
+    }
+
+    function renderStepper() {
+      const stepper = document.querySelector('.stepper') || createStepper();
+      const steps = stepper.querySelectorAll('.step');
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index <= phases.indexOf(state.phase));
+      });
+    }
+
+    function createStepper() {
+      const stepper = document.createElement('div');
+      stepper.className = 'stepper';
+      phases.forEach((phase, index) => {
+        const step = document.createElement('div');
+        step.className = 'step';
+        step.innerHTML = `
+          <div class="step-dot"></div>
+          <span>${phaseLabels[phase]}</span>
+          ${index < phases.length - 1 ? '<div class="step-connector"></div>' : ''}
+        `;
+        stepper.appendChild(step);
+      });
+      return stepper;
+    }
+
+    function render() {
+      // Get or create stepper
+      let stepper = document.querySelector('.stepper');
+      if (!stepper) {
+        const app = document.getElementById('app');
+        stepper = createStepper();
+        app.insertBefore(stepper, app.firstChild);
+      }
+
+      // Get or create phase container
+      let phaseContainer = document.querySelector('.phase-container');
+      if (!phaseContainer) {
+        phaseContainer = document.createElement('div');
+        document.getElementById('app').appendChild(phaseContainer);
+      }
+
+      // Update phase container with current renderer
+      const renderers = [renderIntro, renderArticulate, renderAnalyze, renderRemix, renderTest, renderSummary];
+      phaseContainer.innerHTML = renderers[phases.indexOf(state.phase)]();
+      renderStepper();
+
+      // Restore input value if it exists
+      const inputId = state.phase + '-input';
+      const input = document.getElementById(inputId);
+      if (input && state.responses[state.phase]) {
+        input.value = state.responses[state.phase];
+      }
+    }
+
+    // Initial setup
+    const app = document.getElementById('app');
+    const stepper = createStepper();
+    app.appendChild(stepper);
+
+    const renderers = [renderIntro, renderArticulate, renderAnalyze, renderRemix, renderTest, renderSummary];
+    app.innerHTML = renderers[state.phase]();
+    renderStepper();
+  </script>
 </body>
 </html>
